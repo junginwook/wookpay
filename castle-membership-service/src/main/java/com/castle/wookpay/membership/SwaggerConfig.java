@@ -1,7 +1,6 @@
-package com.fastcampuspay.money;
+package com.castle.wookpay.membership;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-
 import io.swagger.v3.oas.annotations.info.Info;
 import lombok.RequiredArgsConstructor;
 import org.springdoc.core.models.GroupedOpenApi;
@@ -19,7 +18,7 @@ public class SwaggerConfig {
 
 	@Bean
 	public GroupedOpenApi chatOpenApi() {
-		String[] paths = {"/v1/**"};
+		String[] paths = {"/membership/**"};
 
 		return GroupedOpenApi.builder()
 				.group("Money Service API")

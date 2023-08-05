@@ -1,12 +1,12 @@
-package com.castle.wookpay.money;
+package com.castle.wookpay.membership;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MoneyApplication {
+public class MembershipApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MoneyApplication.class);
+		SpringApplication.run(MembershipApplication.class);
 	}
 }
