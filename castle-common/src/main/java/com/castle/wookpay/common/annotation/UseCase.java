@@ -1,4 +1,4 @@
-package com.castle.wookpay.common.annotations;
+package com.castle.wookpay.common.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

@@ -1,0 +1,40 @@
+plugins {
+    id 'com.palantir.docker' version '0.35.0'
+}
+
+bootJar.enabled = true
+jar.enabled = false
+
+group = 'com.castle.wookpay.money'
+version = '1.0.1'
+
+ext{
+    axonVersion = "4.6.0"
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    implementation 'com.mysql:mysql-connector-j'
+
+    //security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
+}
+
+bootJar {
+    launchScript()
+    manifest {
+        attributes 'Start-Class': 'com.castle.wookpay.money.MoneyApplication'
+    }
+}
+
+docker {
+    println(tasks.bootJar.outputs.files)
+    name rootProject.name + '-' + project.name + ":" + version
+    dockerfile file("../Dockerfile")
+    files tasks.bootJar.outputs.files
+    buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
+}

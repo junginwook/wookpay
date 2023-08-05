@@ -1,1 +1,4 @@
 rootProject.name = 'wookpay'
+include 'castle-common'
+include 'castle-membership-service'
+include 'castle-money-service'

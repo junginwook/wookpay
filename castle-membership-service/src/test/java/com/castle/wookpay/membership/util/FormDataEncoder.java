@@ -1,4 +1,4 @@
-package com.fastcampus.projectboard.util;
+package com.castle.wookpay.membership.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
