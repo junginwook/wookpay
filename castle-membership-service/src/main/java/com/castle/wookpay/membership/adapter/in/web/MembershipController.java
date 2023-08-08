@@ -2,9 +2,13 @@ package com.castle.wookpay.membership.adapter.in.web;
 
 import com.castle.wookpay.common.annotation.WebAdapter;
 import com.castle.wookpay.common.http.ApiResponse;
+import com.castle.wookpay.membership.adapter.in.web.request.LoginMembershipRequest;
+import com.castle.wookpay.membership.adapter.in.web.response.LoginMembershipResponse;
 import com.castle.wookpay.membership.adapter.in.web.request.RegisterMembershipRequest;
 import com.castle.wookpay.membership.adapter.in.web.response.RegisterMembershipResponse;
+import com.castle.wookpay.membership.application.port.in.LoginMembershipUseCase;
 import com.castle.wookpay.membership.application.port.in.RegisterMembershipUserCase;
+import com.castle.wookpay.membership.application.port.in.command.LoginMembershipCommand;
 import com.castle.wookpay.membership.application.port.in.command.RegisterMembershipCommand;
 import com.castle.wookpay.membership.domain.Membership;
 import jakarta.validation.Valid;
@@ -19,10 +23,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/membership/v1")
 @RequiredArgsConstructor
-public class RegisterMembershipController {
+public class MembershipController {
 
 	private final RegisterMembershipUserCase registerMembershipUserCase;
-
+	private final LoginMembershipUseCase findMembershipUseCase;
 	@PostMapping("/member")
 	public ApiResponse<RegisterMembershipResponse> registerMember(@Valid @RequestBody RegisterMembershipRequest request) {
 
@@ -36,6 +40,22 @@ public class RegisterMembershipController {
 						membership.getName(),
 						membership.getEmail(),
 						membership.getAddress()),
+				HttpStatus.OK
+		);
+	}
+
+	@PostMapping("/login")
+	public ApiResponse<LoginMembershipResponse> login(@Valid @RequestBody LoginMembershipRequest request) {
+
+		LoginMembershipCommand command = LoginMembershipCommand.builder()
+				.email(request.email())
+				.password(request.password())
+				.build();
+
+		String token = findMembershipUseCase.loginMember(command);
+
+		return new ApiResponse<>(
+				new LoginMembershipResponse(token),
 				HttpStatus.OK
 		);
 	}

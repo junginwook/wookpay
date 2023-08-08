@@ -20,6 +20,9 @@ public class MembershipJpaEntity {
 	private Long id;
 
 	@Column
+	private String password;
+
+	@Column
 	private String name;
 
 	@Column
@@ -34,11 +37,16 @@ public class MembershipJpaEntity {
 	@Column
 	private boolean isCorp;
 
-	public MembershipJpaEntity(String name, String address, String email, boolean isValid, boolean isCorp) {
+	private MembershipJpaEntity(String name, String email, String password, String address, boolean isValid, boolean isCorp) {
 		this.name = name;
 		this.address = address;
+		this.password = password;
 		this.email = email;
 		this.isValid = isValid;
 		this.isCorp = isCorp;
+	}
+
+	public static MembershipJpaEntity of(String name, String email, String password, String address, boolean isValid, boolean isCorp) {
+		return new MembershipJpaEntity(name, email, password, address, isValid, isCorp);
 	}
 }

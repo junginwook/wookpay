@@ -17,11 +17,12 @@ public enum ErrorCode {
 	INVALID_PARAMETER(BAD_REQUEST, 400002, "bad argument"),
 
 	/** 401 */
-	MEMBER_UNAUTHORIZED(UNAUTHORIZED, 400001, "unauthorized member"),
-	CLIENT_USER_NOT_AUTHORIZED(UNAUTHORIZED, 400002, "client user not authorized"),
+	MEMBER_UNAUTHORIZED(UNAUTHORIZED, 401001, "unauthorized member"),
+	CLIENT_USER_NOT_AUTHORIZED(UNAUTHORIZED, 401002, "client user not authorized"),
 
 	/** 403 */
 	FORBIDDEN_RESOURCE(FORBIDDEN, 403001, "forbidden resource"),
+	INVALID_ACCOUNT(FORBIDDEN, 403002, "invalid account"),
 
 	/** 404 */
 	USER_NOT_FOUND(NOT_FOUND, 404001, "user not found"),
