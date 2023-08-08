@@ -9,7 +9,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 import com.castle.wookpay.common.http.ApiResponse;
-import com.castle.wookpay.common.http.ErrorResponse;
 import com.castle.wookpay.membership.adapter.in.web.request.RegisterMembershipRequest;
 import com.castle.wookpay.membership.adapter.in.web.response.RegisterMembershipResponse;
 import com.castle.wookpay.membership.application.port.in.RegisterMembershipUserCase;
@@ -36,19 +35,19 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @DisplayName("멤버 회원가입 controller")
 @Import({FormDataEncoder.class, TestSecurityConfig.class})
-@WebMvcTest(RegisterMembershipController.class)
-class RegisterMembershipControllerTest {
+@WebMvcTest(MembershipController.class)
+class MembershipControllerTest {
 
 	private final MockMvc mvc;
 
 	@MockBean
 	private RegisterMembershipUserCase registerMemberUserCase;
 
-	RegisterMembershipControllerTest(@Autowired MockMvc mvc) {
+	MembershipControllerTest(@Autowired MockMvc mvc) {
 		this.mvc = mvc;
 	}
 
-	@DisplayName("멤버 회원 가입 성공시 test")
+	@DisplayName("요청시 name을 빈 값으로 하면 400 상태코드 반환")
 	@Test
 	void givenNoName_whenRequesting_thenThrowException() throws Exception {
 		RegisterMembershipRequest request = new RegisterMembershipRequest("", "pwd1", "test1@test.com", "address1");
@@ -68,9 +67,6 @@ class RegisterMembershipControllerTest {
 								.content(new ObjectMapper().writeValueAsString(request))
 				)
 				.andExpect(status().is4xxClientError());
-//				.andExpect(content(
-////						new ObjectMapper().writeValueAsString(new ErrorResponse())
-//				));
 		then(registerMemberUserCase).shouldHaveNoInteractions();
 	}
 

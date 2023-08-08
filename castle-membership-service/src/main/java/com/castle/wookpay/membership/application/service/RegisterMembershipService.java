@@ -15,8 +15,10 @@ import com.castle.wookpay.membership.domain.Membership.MemberShipIsCorp;
 import com.castle.wookpay.membership.domain.Membership.MemberShipIsValid;
 import com.castle.wookpay.membership.domain.Membership.MemberShipName;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @UseCase
+@Transactional
 @RequiredArgsConstructor
 public class RegisterMembershipService implements RegisterMembershipUserCase {
 
@@ -30,7 +32,7 @@ public class RegisterMembershipService implements RegisterMembershipUserCase {
 
 		MembershipJpaEntity membershipJpaEntity = registerMembershipPort.registerMembership(command.name(), command.password(), command.email(), command.address());
 		return Membership.generateMember(
-				new MemberShipId(membershipJpaEntity.getId().toString()),
+				new MemberShipId(String.valueOf(membershipJpaEntity.getId())),
 				new MemberShipName(membershipJpaEntity.getName()),
 				new MemberShipEmail(membershipJpaEntity.getEmail()),
 				new MemberShipAddress(membershipJpaEntity.getAddress()),
