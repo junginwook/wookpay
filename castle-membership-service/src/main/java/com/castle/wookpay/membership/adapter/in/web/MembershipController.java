@@ -1,6 +1,7 @@
 package com.castle.wookpay.membership.adapter.in.web;
 
 import com.castle.wookpay.common.annotation.WebAdapter;
+import com.castle.wookpay.common.aop.Test;
 import com.castle.wookpay.common.http.ApiResponse;
 import com.castle.wookpay.membership.adapter.in.web.request.LoginMembershipRequest;
 import com.castle.wookpay.membership.adapter.in.web.response.LoginMembershipResponse;
@@ -27,6 +28,8 @@ public class MembershipController {
 
 	private final RegisterMembershipUserCase registerMembershipUserCase;
 	private final LoginMembershipUseCase findMembershipUseCase;
+
+	@Test
 	@PostMapping("/member")
 	public ApiResponse<RegisterMembershipResponse> registerMember(@Valid @RequestBody RegisterMembershipRequest request) {
 
@@ -44,12 +47,13 @@ public class MembershipController {
 		);
 	}
 
+	@Test
 	@PostMapping("/login")
 	public ApiResponse<LoginMembershipResponse> login(@Valid @RequestBody LoginMembershipRequest request) {
 
 		LoginMembershipCommand command = LoginMembershipCommand.builder()
-				.email(request.email())
-				.password(request.password())
+				.email(request.getEmail())
+				.password(request.getPassword())
 				.build();
 
 		String token = findMembershipUseCase.loginMember(command);

@@ -6,6 +6,8 @@ import com.castle.wookpay.membership.adapter.out.persistence.entity.MembershipJp
 import com.castle.wookpay.membership.application.port.in.LoginMembershipUseCase;
 import com.castle.wookpay.membership.application.port.in.command.LoginMembershipCommand;
 import com.castle.wookpay.membership.application.port.out.LoginMembershipPort;
+import com.castle.wookpay.membership.application.service.dto.MemberDto;
+import com.castle.wookpay.membership.security.JwtTokenProvider;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,17 +18,17 @@ import org.springframework.stereotype.Service;
 public class LoginMembershipService implements LoginMembershipUseCase {
 
 	private final PasswordEncoder passwordEncoder;
-
 	private final LoginMembershipPort loginMembershipPort;
-
+	private final JwtTokenProvider jwtTokenProvider;
 	@Override
 	public String loginMember(LoginMembershipCommand command) {
 
 		MembershipJpaEntity membershipJpaEntity = validateEmail(command);
-
 		validatePassword(command.password(), membershipJpaEntity.getPassword());
 
-		return "token";
+		return jwtTokenProvider.generateJwtToken(
+				new MemberDto(String.valueOf(membershipJpaEntity.getId()), membershipJpaEntity.getEmail())
+		);
 	}
 
 	private MembershipJpaEntity validateEmail(LoginMembershipCommand command) {
