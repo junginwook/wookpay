@@ -4,6 +4,8 @@ import com.castle.wookpay.common.exception.CustomException;
 import com.castle.wookpay.common.exception.ErrorCode;
 import com.castle.wookpay.membership.adapter.out.persistence.entity.MembershipJpaEntity;
 import com.castle.wookpay.membership.application.service.LoginMembershipService;
+import com.castle.wookpay.membership.security.JwtAuthorizationFilter;
+import com.castle.wookpay.membership.security.JwtTokenProvider;
 import java.util.Collection;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -27,6 +29,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
 
+	private final JwtAuthorizationFilter jwtAuthorizationFilter;
+
 	@Bean
 	public SecurityFilterChain securityFilterChain(
 			HttpSecurity http, LoginMembershipService userSecurityService
@@ -44,6 +48,7 @@ public class SecurityConfig {
 						.anyRequest().authenticated()
 				)
 				.csrf(AbstractHttpConfigurer::disable)
+				.addFilterAt(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
 				.build();
 	}
 
