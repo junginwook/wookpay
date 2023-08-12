@@ -62,6 +62,12 @@ project(':castle-money-service') {
     }
 }
 
+project(':castle-banking-service') {
+    dependencies {
+        implementation project(path: ':castle-common', configuration: 'default')
+    }
+}
+
 project(':castle-common') {
     dependencies {
     }
