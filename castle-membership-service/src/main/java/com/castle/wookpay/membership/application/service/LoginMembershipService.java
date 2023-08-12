@@ -12,7 +12,6 @@ import com.castle.wookpay.common.security.dto.MemberDto;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @UseCase

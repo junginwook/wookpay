@@ -47,13 +47,12 @@ public class MembershipController {
 		);
 	}
 
-	@Test
 	@PostMapping("/login")
 	public ApiResponse<LoginMembershipResponse> login(@Valid @RequestBody LoginMembershipRequest request) {
 
 		LoginMembershipCommand command = LoginMembershipCommand.builder()
-				.email(request.getEmail())
-				.password(request.getPassword())
+				.email(request.email())
+				.password(request.password())
 				.build();
 
 		String token = findMembershipUseCase.loginMember(command);
