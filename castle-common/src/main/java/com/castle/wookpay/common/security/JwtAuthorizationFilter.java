@@ -1,12 +1,13 @@
-package com.castle.wookpay.membership.security;
+package com.castle.wookpay.common.security;
 
-import com.castle.wookpay.membership.application.service.dto.MemberDto;
+import com.castle.wookpay.common.security.dto.MemberDto;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -49,3 +50,4 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 		doFilter(request, response, filterChain);
 	}
 }
+
