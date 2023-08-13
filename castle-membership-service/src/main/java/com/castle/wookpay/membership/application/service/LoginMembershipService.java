@@ -1,19 +1,21 @@
 package com.castle.wookpay.membership.application.service;
 
+import com.castle.wookpay.common.annotation.UseCase;
 import com.castle.wookpay.common.exception.CustomException;
 import com.castle.wookpay.common.exception.ErrorCode;
+import com.castle.wookpay.common.security.JwtTokenProvider;
 import com.castle.wookpay.membership.adapter.out.persistence.entity.MembershipJpaEntity;
 import com.castle.wookpay.membership.application.port.in.LoginMembershipUseCase;
 import com.castle.wookpay.membership.application.port.in.command.LoginMembershipCommand;
 import com.castle.wookpay.membership.application.port.out.LoginMembershipPort;
-import com.castle.wookpay.membership.application.service.dto.MemberDto;
-import com.castle.wookpay.membership.security.JwtTokenProvider;
+import com.castle.wookpay.common.security.dto.MemberDto;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-@Service
+@UseCase
+@Transactional
 @RequiredArgsConstructor
 public class LoginMembershipService implements LoginMembershipUseCase {
 

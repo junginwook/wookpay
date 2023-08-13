@@ -47,7 +47,6 @@ subprojects {
 
         implementation 'org.springframework.boot:spring-boot-starter-aop'
         implementation 'org.springframework.kafka:spring-kafka'
-//        implementation 'io.springfox:springfox-boot-starter:3.0.0'
     }
 }
 
@@ -58,6 +57,12 @@ project(':castle-membership-service') {
 }
 
 project(':castle-money-service') {
+    dependencies {
+        implementation project(path: ':castle-common', configuration: 'default')
+    }
+}
+
+project(':castle-banking-service') {
     dependencies {
         implementation project(path: ':castle-common', configuration: 'default')
     }

@@ -1,6 +1,6 @@
-package com.castle.wookpay.membership.security;
+package com.castle.wookpay.common.security;
 
-import com.castle.wookpay.membership.application.service.dto.MemberDto;
+import com.castle.wookpay.common.security.dto.MemberDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtBuilder;
@@ -8,14 +8,10 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
-import jakarta.annotation.PostConstruct;
 import jakarta.xml.bind.DatatypeConverter;
 import java.security.Key;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import javax.crypto.spec.SecretKeySpec;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
