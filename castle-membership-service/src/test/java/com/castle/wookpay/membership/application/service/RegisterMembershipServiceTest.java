@@ -24,7 +24,6 @@ class RegisterMembershipServiceTest {
 
 	@InjectMocks
 	private RegisterMembershipService sut;
-
 	@Mock
 	private RegisterMembershipPort registerMembershipPort;
 

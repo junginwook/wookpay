@@ -29,7 +29,6 @@ public class MembershipController {
 	private final RegisterMembershipUserCase registerMembershipUserCase;
 	private final LoginMembershipUseCase findMembershipUseCase;
 
-	@Test
 	@PostMapping("/member")
 	public ApiResponse<RegisterMembershipResponse> registerMember(@Valid @RequestBody RegisterMembershipRequest request) {
 
@@ -50,12 +49,12 @@ public class MembershipController {
 	@PostMapping("/login")
 	public ApiResponse<LoginMembershipResponse> login(@Valid @RequestBody LoginMembershipRequest request) {
 
-		LoginMembershipCommand command = LoginMembershipCommand.builder()
-				.email(request.email())
-				.password(request.password())
-				.build();
-
-		String token = findMembershipUseCase.loginMember(command);
+		String token = findMembershipUseCase.loginMember(
+				LoginMembershipCommand.builder()
+						.email(request.email())
+						.password(request.password())
+						.build()
+		);
 
 		return new ApiResponse<>(
 				new LoginMembershipResponse(token),

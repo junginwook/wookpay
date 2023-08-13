@@ -15,6 +15,7 @@ public enum ErrorCode {
 
 	BAD_ARGUMENT(BAD_REQUEST, 400001, "bad argument"),
 	INVALID_PARAMETER(BAD_REQUEST, 400002, "bad argument"),
+	USER_NOT_VALID(BAD_REQUEST, 400003, "user not valid"),
 
 	/** 401 */
 	MEMBER_UNAUTHORIZED(UNAUTHORIZED, 401001, "unauthorized member"),

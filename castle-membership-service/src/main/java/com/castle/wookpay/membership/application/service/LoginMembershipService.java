@@ -22,6 +22,8 @@ public class LoginMembershipService implements LoginMembershipUseCase {
 	private final PasswordEncoder passwordEncoder;
 	private final LoginMembershipPort loginMembershipPort;
 	private final JwtTokenProvider jwtTokenProvider;
+
+	@Transactional(readOnly = true)
 	@Override
 	public String loginMember(LoginMembershipCommand command) {
 

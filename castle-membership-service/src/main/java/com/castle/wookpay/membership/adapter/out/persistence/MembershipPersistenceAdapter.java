@@ -3,6 +3,7 @@ package com.castle.wookpay.membership.adapter.out.persistence;
 import com.castle.wookpay.common.annotation.PersistenceAdapter;
 import com.castle.wookpay.membership.adapter.out.persistence.entity.MembershipJpaEntity;
 import com.castle.wookpay.membership.adapter.out.persistence.repository.SpringDataMembershipRepository;
+import com.castle.wookpay.membership.application.port.out.FindMembershipPort;
 import com.castle.wookpay.membership.application.port.out.LoginMembershipPort;
 import com.castle.wookpay.membership.application.port.out.RegisterMembershipPort;
 import java.util.Optional;
@@ -11,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @RequiredArgsConstructor
 @PersistenceAdapter
-public class MembershipPersistenceAdapter implements RegisterMembershipPort, LoginMembershipPort {
+public class MembershipPersistenceAdapter implements RegisterMembershipPort, LoginMembershipPort, FindMembershipPort {
 
 	private final SpringDataMembershipRepository springDataMembershipRepository;
 
@@ -30,5 +31,10 @@ public class MembershipPersistenceAdapter implements RegisterMembershipPort, Log
 	@Override
 	public Optional<MembershipJpaEntity> findMembershipByEmail(String email) {
 		return springDataMembershipRepository.findByEmail(email);
+	}
+
+	@Override
+	public Optional<MembershipJpaEntity> findMembershipById(String memberId) {
+		return springDataMembershipRepository.findById(Long.parseLong(memberId));
 	}
 }

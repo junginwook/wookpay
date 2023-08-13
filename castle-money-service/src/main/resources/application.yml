@@ -1,0 +1,14 @@
+
+feign:
+  url:
+    prefix: http://castle-membership-service:8081/membership
+  client:
+    config:
+      default:
+        connectTimeout: 1000
+        readTimeout: 3000
+        loggerLevel: NONE
+      demo-client:
+        connectTimeout: 1000
+        readTimeout: 10000
+        loggerLevel: HEADERS

@@ -25,13 +25,8 @@ class LoginMembershipServiceTest {
 
 	@InjectMocks
 	private LoginMembershipService sut;
-
-	@MockBean
-	private PasswordEncoder passwordEncoder;
-
 	@Mock
 	private LoginMembershipPort loginMembershipPort;
-
 	@Mock
 	private JwtTokenProvider jwtTokenProvider;
 

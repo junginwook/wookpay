@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/membership/v1")
 @RequiredArgsConstructor
 public class TestController {
-	@SecurityRequirement(name = "Bearer Authentication")
+
 	@PostMapping("/test")
 	public ApiResponse<String> registerMember(@Valid @RequestBody RegisterMembershipRequest request) {
 
