@@ -8,7 +8,7 @@ feign:
         connectTimeout: 1000
         readTimeout: 3000
         loggerLevel: NONE
-      demo-client:
+      membership-client:
         connectTimeout: 1000
         readTimeout: 10000
         loggerLevel: HEADERS

@@ -7,6 +7,7 @@ import com.castle.wookpay.membership.adapter.in.web.response.FindMembershipRespo
 import com.castle.wookpay.membership.application.port.in.FindMembershipUseCase;
 import com.castle.wookpay.membership.application.port.in.command.FindMembershipCommand;
 import com.castle.wookpay.membership.domain.Membership;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Slf4j
 @WebAdapter
 @RestController
 @RequestMapping("/membership/v1")
@@ -25,6 +25,7 @@ public class FindMembershipController {
 
 	private final FindMembershipUseCase findMembershipUseCase;
 
+	@Operation(summary = "유저 정보 조회")
 	@GetMapping("/member/{memberId}")
 	public ApiResponse<FindMembershipResponse> findValidMember(@PathVariable("memberId") String memberId) {
 

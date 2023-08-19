@@ -12,6 +12,7 @@ import com.castle.wookpay.membership.application.port.in.RegisterMembershipUserC
 import com.castle.wookpay.membership.application.port.in.command.LoginMembershipCommand;
 import com.castle.wookpay.membership.application.port.in.command.RegisterMembershipCommand;
 import com.castle.wookpay.membership.domain.Membership;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,7 @@ public class MembershipController {
 	private final RegisterMembershipUserCase registerMembershipUserCase;
 	private final LoginMembershipUseCase findMembershipUseCase;
 
+	@Operation(summary = "유저 등록")
 	@PostMapping("/member")
 	public ApiResponse<RegisterMembershipResponse> registerMember(@Valid @RequestBody RegisterMembershipRequest request) {
 
@@ -46,6 +48,7 @@ public class MembershipController {
 		);
 	}
 
+	@Operation(summary = "유저 로그인")
 	@PostMapping("/login")
 	public ApiResponse<LoginMembershipResponse> login(@Valid @RequestBody LoginMembershipRequest request) {
 
