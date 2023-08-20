@@ -1,5 +1,6 @@
 package com.castle.wookpay.membership.domain;
 
+import com.castle.wookpay.membership.adapter.out.persistence.entity.MembershipJpaEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,6 +41,26 @@ public class Membership {
 				memberShipIsValid.memberShipIsValid,
 				memberShipIsCorp.memberShipIsCorp);
 	}
+
+	public static Membership generateMember(MembershipJpaEntity membershipJpaEntity) {
+		return new Membership(
+				String.valueOf(membershipJpaEntity.getId()),
+				membershipJpaEntity.getName(),
+				membershipJpaEntity.getEmail(),
+				membershipJpaEntity.getAddress(),
+				membershipJpaEntity.isValid(),
+				membershipJpaEntity.isCorp()
+		);
+	}
+
+	public boolean isValid() {
+		if (this.isValid == true) {
+			return true;
+		}
+
+		return false;
+	}
+
 
 	@Value
 	public static class MemberShipId {

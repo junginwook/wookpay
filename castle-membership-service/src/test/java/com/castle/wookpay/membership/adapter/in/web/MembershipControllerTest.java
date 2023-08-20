@@ -43,10 +43,8 @@ import org.springframework.test.web.servlet.MockMvc;
 class MembershipControllerTest {
 
 	private final MockMvc mvc;
-
 	@MockBean
 	private RegisterMembershipUserCase registerMemberUserCase;
-
 	@MockBean
 	private LoginMembershipUseCase loginMembershipUseCase;
 
@@ -77,7 +75,7 @@ class MembershipControllerTest {
 		then(registerMemberUserCase).shouldHaveNoInteractions();
 	}
 
-	@DisplayName("멤버 회원 가입 성공 test")
+	@DisplayName("멤버 회원 가입 성공")
 	@Test
 	void givenRegisterMemberRequest_whenRequesting_thenRegisterMembership() throws Exception {
 		final RegisterMembershipRequest request = new RegisterMembershipRequest("name1", "pwd1", "test1@test.com", "address1");
