@@ -1,14 +1,12 @@
-package com.castle.wookpay.money.domain.feign.interceptor;
+package com.castle.wookpay.money.domain.feign.membership;
 
 import feign.Request.HttpMethod;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import java.nio.charset.StandardCharsets;
-import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
-@RequiredArgsConstructor(staticName = "of")
-public class DemoFeignInterceptor implements RequestInterceptor {
+public class MembershipFeignInterceptor implements RequestInterceptor {
 
 	@Override
 	public void apply(RequestTemplate template) {
@@ -24,6 +22,5 @@ public class DemoFeignInterceptor implements RequestInterceptor {
 		//추가적으로 필요한 로직 추가
 
 		template.body(encodedString);
-
 	}
 }

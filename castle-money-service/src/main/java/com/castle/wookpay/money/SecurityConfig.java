@@ -1,7 +1,6 @@
-package com.castle.wookpay.membership;
+package com.castle.wookpay.money;
 
 import com.castle.wookpay.common.security.JwtAuthorizationFilter;
-import com.castle.wookpay.membership.application.service.LoginMembershipService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -28,8 +27,6 @@ public class SecurityConfig {
 		return http
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-						.requestMatchers(HttpMethod.POST, "/membership/v1/member", "/membership/v1/login").permitAll()
-						.requestMatchers("/membership/internal/v1/**").permitAll()
 						.requestMatchers(
 								"/swagger-ui/**",
 								"/v3/api-docs/**",

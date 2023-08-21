@@ -7,19 +7,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.FieldError;
 
-@Getter
 @Builder
-@RequiredArgsConstructor
-public class ErrorResponse {
-
-	private final boolean success = false;
-
-	private final int status;
-
-	private final String message;
-
-	@JsonInclude(JsonInclude.Include.NON_EMPTY) //errors 가 없다면 응답으로 내려가지 않도록
-	private final List<ValidationError> errors;
+public record ErrorResponse(int status, String message, @JsonInclude(JsonInclude.Include.NON_EMPTY) List<ValidationError> errors) {
 
 	@Builder
 	public record ValidationError(String filed, String message) {

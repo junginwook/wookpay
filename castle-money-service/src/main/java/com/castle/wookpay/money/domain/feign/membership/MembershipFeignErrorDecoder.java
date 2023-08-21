@@ -1,10 +1,12 @@
-package com.castle.wookpay.money.domain.feign.decoder;
+package com.castle.wookpay.money.domain.feign.membership;
 
+import com.castle.wookpay.common.exception.CustomException;
+import com.castle.wookpay.common.exception.ErrorCode;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 import org.springframework.http.HttpStatus;
 
-public class DemoFeignErrorDecoder implements ErrorDecoder {
+public class MembershipFeignErrorDecoder implements ErrorDecoder {
 
 	private final ErrorDecoder errorDecoder = new Default();
 
@@ -13,8 +15,7 @@ public class DemoFeignErrorDecoder implements ErrorDecoder {
 		HttpStatus httpStatus = HttpStatus.resolve(response.status());
 
 		if (httpStatus == HttpStatus.NOT_FOUND) {
-			System.out.println("[DemoFeignErrordEcoder] Http Status = " + httpStatus);
-			throw new RuntimeException(String.format("[RuntimeException] Http Status is %s", httpStatus));
+			throw new CustomException(ErrorCode.NOT_FOUND_FROM_REMOTE);
 		}
 
 		return errorDecoder.decode(methodKey, response);
