@@ -2,7 +2,7 @@ package com.castle.wookpay.membership.adapter.in.web;
 
 import com.castle.wookpay.common.annotation.WebAdapter;
 import com.castle.wookpay.common.http.ApiResponse;
-import com.castle.wookpay.membership.adapter.in.web.response.FindMembershipResponse;
+import com.castle.wookpay.membership.domain.response.FindMembershipResponse;
 import com.castle.wookpay.membership.application.port.in.FindMembershipUseCase;
 import com.castle.wookpay.membership.application.port.in.command.FindMembershipCommand;
 import com.castle.wookpay.membership.domain.Membership;

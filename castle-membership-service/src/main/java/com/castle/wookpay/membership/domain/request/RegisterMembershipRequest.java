@@ -1,4 +1,4 @@
-package com.castle.wookpay.membership.adapter.in.web.request;
+package com.castle.wookpay.membership.domain.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

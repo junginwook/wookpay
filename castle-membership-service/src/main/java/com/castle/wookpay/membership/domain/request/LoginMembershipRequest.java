@@ -1,4 +1,4 @@
-package com.castle.wookpay.membership.adapter.in.web.request;
+package com.castle.wookpay.membership.domain.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;

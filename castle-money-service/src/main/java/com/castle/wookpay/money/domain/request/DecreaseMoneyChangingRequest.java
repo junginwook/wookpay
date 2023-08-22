@@ -1,4 +1,4 @@
-package com.castle.wookpay.money.adapter.in.web.request;
+package com.castle.wookpay.money.domain.request;
 
 public record DecreaseMoneyChangingRequest(String targetMembershipId, Long amount){
 

@@ -1,4 +1,4 @@
-package com.castle.wookpay.money.domain.feign.membership;
+package com.castle.wookpay.banking.domain.feign.membership;
 
 import feign.Request.HttpMethod;
 import feign.RequestInterceptor;

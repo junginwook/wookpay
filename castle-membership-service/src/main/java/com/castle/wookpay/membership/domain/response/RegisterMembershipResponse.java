@@ -1,4 +1,4 @@
-package com.castle.wookpay.membership.adapter.in.web.response;
+package com.castle.wookpay.membership.domain.response;
 
 import lombok.Builder;
 

@@ -4,7 +4,7 @@ import com.castle.wookpay.common.annotation.UseCase;
 import com.castle.wookpay.money.adapter.out.service.membership.MembershipServiceAdapter;
 import com.castle.wookpay.money.adapter.out.service.membership.response.FindMembershipResponse;
 import com.castle.wookpay.money.application.port.in.IncreaseMoneyUseCase;
-import com.castle.wookpay.money.application.port.in.command.IncreaseMoneyChangingCommand;
+import com.castle.wookpay.money.domain.command.IncreaseMoneyChangingCommand;
 import com.castle.wookpay.money.domain.MoneyChangingRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;

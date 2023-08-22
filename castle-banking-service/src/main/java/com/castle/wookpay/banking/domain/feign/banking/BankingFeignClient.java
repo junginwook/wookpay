@@ -1,6 +1,6 @@
-package com.castle.wookpay.money.domain.feign.banking;
+package com.castle.wookpay.banking.domain.feign.banking;
 
-import com.castle.wookpay.money.domain.feign.membership.MembershipFeignConfig;
+import com.castle.wookpay.banking.domain.feign.membership.MembershipFeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 
 @FeignClient(

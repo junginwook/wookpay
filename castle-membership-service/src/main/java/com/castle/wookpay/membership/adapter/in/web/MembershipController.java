@@ -1,12 +1,11 @@
 package com.castle.wookpay.membership.adapter.in.web;
 
 import com.castle.wookpay.common.annotation.WebAdapter;
-import com.castle.wookpay.common.aop.Test;
 import com.castle.wookpay.common.http.ApiResponse;
-import com.castle.wookpay.membership.adapter.in.web.request.LoginMembershipRequest;
-import com.castle.wookpay.membership.adapter.in.web.response.LoginMembershipResponse;
-import com.castle.wookpay.membership.adapter.in.web.request.RegisterMembershipRequest;
-import com.castle.wookpay.membership.adapter.in.web.response.RegisterMembershipResponse;
+import com.castle.wookpay.membership.domain.request.LoginMembershipRequest;
+import com.castle.wookpay.membership.domain.response.LoginMembershipResponse;
+import com.castle.wookpay.membership.domain.request.RegisterMembershipRequest;
+import com.castle.wookpay.membership.domain.response.RegisterMembershipResponse;
 import com.castle.wookpay.membership.application.port.in.LoginMembershipUseCase;
 import com.castle.wookpay.membership.application.port.in.RegisterMembershipUserCase;
 import com.castle.wookpay.membership.application.port.in.command.LoginMembershipCommand;
