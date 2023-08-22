@@ -26,6 +26,7 @@ public enum ErrorCode {
 	INVALID_ACCOUNT(FORBIDDEN, 403002, "invalid account"),
 
 	/** 404 */
+	NOT_FOUND_FROM_REMOTE(NOT_FOUND, 404000, "resource not found in remote"),
 	USER_NOT_FOUND(NOT_FOUND, 404001, "user not found"),
 	RESOURCE_NOT_FOUND(NOT_FOUND, 404002, "resource not found"),
 	CLIENT_USER_NOT_FOUND(NOT_FOUND, 404003, "client user not found"),

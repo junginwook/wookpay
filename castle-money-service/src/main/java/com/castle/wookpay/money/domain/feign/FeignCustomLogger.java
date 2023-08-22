@@ -1,4 +1,4 @@
-package com.castle.wookpay.money.domain.feign.logger;
+package com.castle.wookpay.money.domain.feign;
 
 import static feign.Util.decodeOrDefault;
 import static feign.Util.valuesOrEmpty;

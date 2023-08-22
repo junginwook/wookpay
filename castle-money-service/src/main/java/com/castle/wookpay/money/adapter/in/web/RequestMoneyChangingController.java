@@ -29,7 +29,7 @@ public class RequestMoneyChangingController {
 	private final IncreaseMoneyUseCase increaseMoneyUseCase;
 
 	@Operation(summary = "머니 감액 요청")
-	@PostMapping(path = "/v1/money/increase")
+	@PostMapping(path = "/money/v1/increase")
 	public ApiResponse<IncreaseMoneyChangingResponse> increaseMoney(
 			@Valid @RequestBody IncreaseMoneyChangingRequest request) {
 
@@ -48,7 +48,7 @@ public class RequestMoneyChangingController {
 	}
 
 	@Operation(summary = "머니 감액 요청")
-	@PostMapping(path = "/v1/money/decrease")
+	@PostMapping(path = "/money/v1/decrease")
 	public ApiResponse<DecreaseMoneyChangingResponse> decreaseMoney(
 			@Valid @RequestBody DecreaseMoneyChangingRequest request) {
 
