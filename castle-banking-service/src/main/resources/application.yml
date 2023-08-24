@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/fastcampus_pay?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    username: mysqluser
+    password: mysqlpw
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        default_batch_fetch_size: 1000
+        format_sql: true
+    hibernate:
+      ddl-auto: validate
+
+feign:
+  url:
+    membership: castle-membership-service:8080/membership
+  client:
+    config:
+      default:
+        connectTimeout: 1000
+        readTimeout: 3000
+        loggerLevel: NONE
+      membership-client:
+        connectTimeout: 1000
+        readTimeout: 10000
+        loggerLevel: HEADERS
+
+jwt:
+  jwtSecretKey: 2ifamoxz94kcpwigfi9spcadcfawasadff324rfsdfsdfsfsd
+  expirationTime: 3600000

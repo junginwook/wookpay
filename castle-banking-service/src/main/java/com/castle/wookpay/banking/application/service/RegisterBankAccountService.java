@@ -18,8 +18,11 @@ public class RegisterBankAccountService implements RegisterBankAccountUseCase {
 
 	@Override
 	public RegisterBankAccountResult registerBankAccount(RegisterBankAccountCommand command) {
+		FindMembershipResponse membership =
+				findMembershipPort.findMembership(command.membershipId());
 
-		FindMembershipResponse membership = findMembershipPort.findMembership(command.membershipId());
+
+
 
 		return null;
 	}
