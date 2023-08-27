@@ -1,8 +1,8 @@
 package com.castle.wookpay.membership.application.port.out;
 
-import com.castle.wookpay.membership.adapter.out.persistence.entity.MembershipJpaEntity;
+import com.castle.wookpay.membership.domain.entity.MembershipJpaEntity;
 import java.util.Optional;
 
-public interface FindMembershipPort {
+public interface ValidateMembershipPort {
 	Optional<MembershipJpaEntity> findMembershipById(String memberId);
 }

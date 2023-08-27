@@ -4,7 +4,7 @@ import com.castle.wookpay.common.annotation.UseCase;
 import com.castle.wookpay.common.exception.CustomException;
 import com.castle.wookpay.common.exception.ErrorCode;
 import com.castle.wookpay.common.security.JwtTokenProvider;
-import com.castle.wookpay.membership.adapter.out.persistence.entity.MembershipJpaEntity;
+import com.castle.wookpay.membership.domain.entity.MembershipJpaEntity;
 import com.castle.wookpay.membership.application.port.in.LoginMembershipUseCase;
 import com.castle.wookpay.membership.application.port.in.command.LoginMembershipCommand;
 import com.castle.wookpay.membership.application.port.out.LoginMembershipPort;

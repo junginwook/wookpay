@@ -6,29 +6,35 @@ import com.castle.wookpay.banking.domain.request.RegisterBankAccountRequest;
 import com.castle.wookpay.banking.domain.response.RegisterBankAccountResponse;
 import com.castle.wookpay.banking.domain.result.RegisterBankAccountResult;
 import com.castle.wookpay.common.annotation.WebAdapter;
+import com.castle.wookpay.common.http.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @WebAdapter
+@RestController
+@RequestMapping("/banking/v1")
 @RequiredArgsConstructor
 public class RegisterBankAccountController {
 	private final RegisterBankAccountUseCase registerBankAccountUseCase;
 
-	@PostMapping(path = "/banking/v1/account")
-	RegisterBankAccountResponse registerBankAccount(
+	@PostMapping(path = "/account")
+	ApiResponse<RegisterBankAccountResponse> registerBankAccount(
 			@Valid @RequestBody RegisterBankAccountRequest request
 	) {
 		RegisterBankAccountCommand command = new RegisterBankAccountCommand(request.membershipId(), request.bankName(), request.bankAccountNumber());
 		RegisterBankAccountResult result = registerBankAccountUseCase.registerBankAccount(command);
 
-		return new RegisterBankAccountResponse(
-				result.registeredBankAccountId(),
-				request.membershipId(),
-				request.bankName(),
-				result.bankAccountNumber(),
-				result.linkedStatusIsValid()
-		);
+		return new ApiResponse<>(
+			 new RegisterBankAccountResponse(
+					result.registeredBankAccountId(),
+					result.membershipId(),
+					result.bankName(),
+					result.bankAccountNumber()
+			), HttpStatus.OK);
 	}
 }

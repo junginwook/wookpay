@@ -1,4 +1,4 @@
-package com.castle.wookpay.membership.adapter.out.persistence.entity;
+package com.castle.wookpay.membership.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

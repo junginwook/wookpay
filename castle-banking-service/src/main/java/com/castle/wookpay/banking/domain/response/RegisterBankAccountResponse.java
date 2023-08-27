@@ -4,8 +4,7 @@ public record RegisterBankAccountResponse(
 		String registeredBankAccountId,
 		String membershipId,
 		String bankName,
-		String bankAccountNumber,
-		Boolean linkedStatusIsValid
+		String bankAccountNumber
 ) {
 
 }

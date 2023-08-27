@@ -39,6 +39,17 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
 
+  castle-banking-service:
+    image: wookpay-castle-banking-service:1.0.0
+    networks:
+      - wookpay_network
+    ports:
+      - "8083:8080"
+    depends_on:
+      - mysql
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
 networks:
   wookpay_network:
     driver: bridge

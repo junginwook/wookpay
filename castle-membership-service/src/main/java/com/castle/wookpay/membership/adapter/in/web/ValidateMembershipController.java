@@ -3,7 +3,7 @@ package com.castle.wookpay.membership.adapter.in.web;
 import com.castle.wookpay.common.annotation.WebAdapter;
 import com.castle.wookpay.common.http.ApiResponse;
 import com.castle.wookpay.membership.domain.response.FindMembershipResponse;
-import com.castle.wookpay.membership.application.port.in.FindMembershipUseCase;
+import com.castle.wookpay.membership.application.port.in.ValidateMembershipUseCase;
 import com.castle.wookpay.membership.application.port.in.command.FindMembershipCommand;
 import com.castle.wookpay.membership.domain.Membership;
 import io.swagger.v3.oas.annotations.Operation;
@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/membership/internal/v1")
 @RequiredArgsConstructor
-public class FindMembershipController {
+public class ValidateMembershipController {
 
-	private final FindMembershipUseCase findMembershipUseCase;
+	private final ValidateMembershipUseCase findMembershipUseCase;
 
 	@Operation(summary = "유저 정보 조회")
 	@GetMapping("/member/{memberId}")
 	public ApiResponse<FindMembershipResponse> findValidMember(@PathVariable("memberId") String memberId) {
 
-		Membership membership = findMembershipUseCase.findMember(
+		Membership membership = findMembershipUseCase.validateMember(
 				new FindMembershipCommand(memberId)
 		);
 

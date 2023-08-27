@@ -7,7 +7,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.castle.wookpay.membership.application.port.in.command.FindMembershipCommand;
-import com.castle.wookpay.membership.application.service.FindMembershipService;
+import com.castle.wookpay.membership.application.service.ValidateMembershipService;
 import com.castle.wookpay.membership.config.TestSecurityConfig;
 import com.castle.wookpay.membership.domain.Membership;
 import com.castle.wookpay.membership.domain.Membership.MemberShipAddress;
@@ -29,14 +29,14 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @DisplayName("유효한 멤버 조회 controller")
 @Import({TestSecurityConfig.class})
-@WebMvcTest(FindMembershipController.class)
-class FindMembershipControllerTest {
+@WebMvcTest(ValidateMembershipController.class)
+class ValidateMembershipControllerTest {
 
 	private final MockMvc mvc;
 	@MockBean
-	private FindMembershipService findMembershipService;
+	private ValidateMembershipService findMembershipService;
 
-	public FindMembershipControllerTest(@Autowired MockMvc mvc) {
+	public ValidateMembershipControllerTest(@Autowired MockMvc mvc) {
 		this.mvc = mvc;
 	}
 

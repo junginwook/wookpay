@@ -17,7 +17,7 @@ spring:
 feign:
   url:
     membership: castle-membership-service:8080/membership
-    banking: castle-banking-service:8080
+    banking: castle-banking-service:8080/banking
   client:
     config:
       default:
