@@ -16,17 +16,3 @@ spring:
         format_sql: true
     hibernate:
       ddl-auto: update
-
-feign:
-  url:
-    membership: localhost:8071/membership
-  client:
-    config:
-      default:
-        connectTimeout: 1000
-        readTimeout: 3000
-        loggerLevel: NONE
-      membership-client:
-        connectTimeout: 1000
-        readTimeout: 10000
-        loggerLevel: HEADERS

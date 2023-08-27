@@ -1,7 +1,6 @@
 package com.castle.wookpay.membership;
 
 import com.castle.wookpay.common.security.JwtAuthorizationFilter;
-import com.castle.wookpay.membership.application.service.LoginMembershipService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;

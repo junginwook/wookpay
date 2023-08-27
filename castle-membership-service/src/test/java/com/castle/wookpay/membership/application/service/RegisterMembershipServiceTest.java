@@ -7,7 +7,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 
 import com.castle.wookpay.common.exception.CustomException;
-import com.castle.wookpay.membership.adapter.out.persistence.entity.MembershipJpaEntity;
+import com.castle.wookpay.membership.domain.entity.MembershipJpaEntity;
 import com.castle.wookpay.membership.application.port.in.command.RegisterMembershipCommand;
 import com.castle.wookpay.membership.application.port.out.RegisterMembershipPort;
 import com.castle.wookpay.membership.domain.Membership;

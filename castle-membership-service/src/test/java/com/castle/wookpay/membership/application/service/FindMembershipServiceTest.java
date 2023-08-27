@@ -8,7 +8,7 @@ import static org.mockito.BDDMockito.then;
 
 import com.castle.wookpay.common.exception.CustomException;
 import com.castle.wookpay.membership.application.port.in.command.FindMembershipCommand;
-import com.castle.wookpay.membership.application.port.out.FindMembershipPort;
+import com.castle.wookpay.membership.application.port.out.ValidateMembershipPort;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,9 +22,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class FindMembershipServiceTest {
 
 	@InjectMocks
-	private FindMembershipService sut;
+	private ValidateMembershipService sut;
 	@Mock
-	private FindMembershipPort findMembershipPort;
+	private ValidateMembershipPort findMembershipPort;
 
 	@DisplayName("멤버 조회시 없을 경우 Exception")
 	@Test

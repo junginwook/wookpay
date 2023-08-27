@@ -1,6 +1,6 @@
 package com.castle.wookpay.membership.adapter.out.persistence.repository;
 
-import com.castle.wookpay.membership.adapter.out.persistence.entity.MembershipJpaEntity;
+import com.castle.wookpay.membership.domain.entity.MembershipJpaEntity;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

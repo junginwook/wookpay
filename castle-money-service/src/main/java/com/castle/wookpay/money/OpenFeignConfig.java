@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableFeignClients("com.castle.wookpay.money.domain.feign")
 public class OpenFeignConfig {
-
 	@Bean
 	public Logger feignCustomLogger() {
 		return new FeignCustomLogger();

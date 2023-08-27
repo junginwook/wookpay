@@ -20,7 +20,6 @@ public class MembershipFeignInterceptor implements RequestInterceptor {
 		System.out.println("[POST] [DemoFeignInterceptor] requestBody : " + encodedString);
 
 		//추가적으로 필요한 로직 추가
-
 		template.body(encodedString);
 	}
 }

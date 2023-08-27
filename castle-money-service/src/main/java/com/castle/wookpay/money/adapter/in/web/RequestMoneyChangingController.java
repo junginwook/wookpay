@@ -2,12 +2,12 @@ package com.castle.wookpay.money.adapter.in.web;
 
 import com.castle.wookpay.common.annotation.WebAdapter;
 import com.castle.wookpay.common.http.ApiResponse;
-import com.castle.wookpay.money.adapter.in.web.request.DecreaseMoneyChangingRequest;
-import com.castle.wookpay.money.adapter.in.web.request.IncreaseMoneyChangingRequest;
-import com.castle.wookpay.money.adapter.in.web.response.DecreaseMoneyChangingResponse;
-import com.castle.wookpay.money.adapter.in.web.response.IncreaseMoneyChangingResponse;
+import com.castle.wookpay.money.domain.request.DecreaseMoneyChangingRequest;
+import com.castle.wookpay.money.domain.request.IncreaseMoneyChangingRequest;
+import com.castle.wookpay.money.domain.response.DecreaseMoneyChangingResponse;
+import com.castle.wookpay.money.domain.response.IncreaseMoneyChangingResponse;
 import com.castle.wookpay.money.application.port.in.IncreaseMoneyUseCase;
-import com.castle.wookpay.money.application.port.in.command.IncreaseMoneyChangingCommand;
+import com.castle.wookpay.money.domain.command.IncreaseMoneyChangingCommand;
 import com.castle.wookpay.money.domain.MoneyChangingRequest;
 import com.castle.wookpay.money.domain.enums.MoneyChangingResultStatus;
 import com.castle.wookpay.money.domain.enums.MoneyChangingType;

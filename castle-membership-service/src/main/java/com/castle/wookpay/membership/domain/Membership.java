@@ -1,9 +1,8 @@
 package com.castle.wookpay.membership.domain;
 
-import com.castle.wookpay.membership.adapter.out.persistence.entity.MembershipJpaEntity;
+import com.castle.wookpay.membership.domain.entity.MembershipJpaEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Value;
 
