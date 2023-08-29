@@ -1,8 +1,8 @@
 package com.castle.wookpay.banking.application.port.out.external.bank;
 
-import com.castle.wookpay.banking.adapter.out.external.bank.request.GetBankAccountRequest;
-import com.castle.wookpay.banking.adapter.out.external.bank.response.GetBankAccountResponse;
+import com.castle.wookpay.banking.adapter.out.external.bank.request.ExGetBankAccountRequest;
+import com.castle.wookpay.banking.adapter.out.external.bank.response.ExGetBankAccountResponse;
 
 public interface RequestBankAccountInfoPort {
-	GetBankAccountResponse getBankAccountInfo(GetBankAccountRequest request);
+	ExGetBankAccountResponse getBankAccountInfo(ExGetBankAccountRequest request);
 }
