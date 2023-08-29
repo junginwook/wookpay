@@ -1,7 +1,7 @@
 package com.castle.wookpay.banking.application.service;
 
-import com.castle.wookpay.banking.adapter.out.external.bank.request.GetBankAccountRequest;
-import com.castle.wookpay.banking.adapter.out.external.bank.response.GetBankAccountResponse;
+import com.castle.wookpay.banking.adapter.out.external.bank.request.ExGetBankAccountRequest;
+import com.castle.wookpay.banking.adapter.out.external.bank.response.ExGetBankAccountResponse;
 import com.castle.wookpay.banking.application.port.in.RegisterBankAccountUseCase;
 import com.castle.wookpay.banking.application.port.out.external.bank.RequestBankAccountInfoPort;
 import com.castle.wookpay.banking.domain.feign.persistence.CheckDuplicateBankAccountPort;
@@ -38,8 +38,8 @@ public class RegisterBankAccountService implements RegisterBankAccountUseCase {
 		}
 
 		// 유효한 계좌인지 체크
-		final GetBankAccountResponse getBankAccountResponse = requestBankAccountInfoPort.getBankAccountInfo(
-				new GetBankAccountRequest(command.bankName(), command.bankAccountNumber())
+		final ExGetBankAccountResponse getBankAccountResponse = requestBankAccountInfoPort.getBankAccountInfo(
+				new ExGetBankAccountRequest(command.bankName(), command.bankAccountNumber())
 		);
 
 		BankAccountJpaEntity registeredBankAccountJpaEntity;

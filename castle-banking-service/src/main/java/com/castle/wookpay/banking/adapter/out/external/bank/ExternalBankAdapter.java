@@ -1,9 +1,9 @@
 package com.castle.wookpay.banking.adapter.out.external.bank;
 
-import com.castle.wookpay.banking.adapter.out.external.bank.request.GetBankAccountRequest;
-import com.castle.wookpay.banking.adapter.out.external.bank.request.RequestFirmBankingRequest;
-import com.castle.wookpay.banking.adapter.out.external.bank.response.GetBankAccountResponse;
-import com.castle.wookpay.banking.adapter.out.external.bank.response.RequestFirmBankingResponse;
+import com.castle.wookpay.banking.adapter.out.external.bank.request.ExGetBankAccountRequest;
+import com.castle.wookpay.banking.adapter.out.external.bank.request.ExRequestFirmBankingRequest;
+import com.castle.wookpay.banking.adapter.out.external.bank.response.ExGetBankAccountResponse;
+import com.castle.wookpay.banking.adapter.out.external.bank.response.ExRequestFirmBankingResponse;
 import com.castle.wookpay.banking.application.port.out.external.bank.RequestBankAccountInfoPort;
 import com.castle.wookpay.banking.application.port.out.external.bank.RequestExternalFirmBankingPort;
 import com.castle.wookpay.common.annotation.ExternalSystemAdapter;
@@ -14,12 +14,12 @@ import lombok.RequiredArgsConstructor;
 public class ExternalBankAdapter implements RequestBankAccountInfoPort, RequestExternalFirmBankingPort {
 
 	@Override
-	public GetBankAccountResponse getBankAccountInfo(GetBankAccountRequest request) {
-		return new GetBankAccountResponse("bankName", "1234", true);
+	public ExGetBankAccountResponse getBankAccountInfo(ExGetBankAccountRequest request) {
+		return new ExGetBankAccountResponse("bankName", "1234", true);
 	}
 
 	@Override
-	public RequestFirmBankingResponse requestExternalFirmBanking(RequestFirmBankingRequest request) {
-		return new RequestFirmBankingResponse(0);
+	public ExRequestFirmBankingResponse requestExternalFirmBanking(ExRequestFirmBankingRequest request) {
+		return new ExRequestFirmBankingResponse(0);
 	}
 }
