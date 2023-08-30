@@ -8,7 +8,6 @@ public record RequestFirmBankingResult(
 		String fromBankAccountNumber,
 		String toBankName,
 		String toBankAccountNumber,
-		int moneyAmount
+		Long moneyAmount
 ) {
-
 }

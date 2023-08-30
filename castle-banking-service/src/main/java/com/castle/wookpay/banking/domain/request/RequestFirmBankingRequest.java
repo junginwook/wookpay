@@ -20,7 +20,8 @@ public record RequestFirmBankingRequest(
 		@NotBlank
 		String toBankAccountNumber,
 
-		int moneyAmount
+		@NotNull
+		Long moneyAmount
 ) {
 
 }
