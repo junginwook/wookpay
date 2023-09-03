@@ -4,8 +4,8 @@ import com.castle.wookpay.banking.adapter.out.external.bank.request.ExGetBankAcc
 import com.castle.wookpay.banking.adapter.out.external.bank.response.ExGetBankAccountResponse;
 import com.castle.wookpay.banking.application.port.in.RegisterBankAccountUseCase;
 import com.castle.wookpay.banking.application.port.out.external.bank.RequestBankAccountInfoPort;
-import com.castle.wookpay.banking.domain.feign.persistence.CheckDuplicateBankAccountPort;
-import com.castle.wookpay.banking.domain.feign.persistence.RegisterBankAccountPort;
+import com.castle.wookpay.banking.application.port.out.persistence.CheckDuplicateBankAccountPort;
+import com.castle.wookpay.banking.application.port.out.persistence.RegisterBankAccountPort;
 import com.castle.wookpay.banking.application.port.out.microservice.membership.ValidateMembershipPort;
 import com.castle.wookpay.banking.domain.command.RegisterBankAccountCommand;
 import com.castle.wookpay.banking.domain.entity.BankAccountJpaEntity;
@@ -13,7 +13,6 @@ import com.castle.wookpay.banking.domain.result.RegisterBankAccountResult;
 import com.castle.wookpay.common.annotation.UseCase;
 import com.castle.wookpay.common.exception.CustomException;
 import com.castle.wookpay.common.exception.ErrorCode;
-import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,10 +31,8 @@ public class RegisterBankAccountService implements RegisterBankAccountUseCase {
 		findMembershipPort.validateMembership(command.membershipId());
 
 		// 중복된 계좌인지 체크
-		Optional<BankAccountJpaEntity> optionalBankAccountJpaEntity = checkDuplicateBankAccountPort.existBankAccount(command.bankName(), command.bankAccountNumber());
-		if(optionalBankAccountJpaEntity.isPresent()) {
-			throw new CustomException(ErrorCode.DUPLICATE_RESOURCE);
-		}
+		checkDuplicateBankAccountPort.existBankAccount(command.bankName(), command.bankAccountNumber());
+
 
 		// 유효한 계좌인지 체크
 		final ExGetBankAccountResponse getBankAccountResponse = requestBankAccountInfoPort.getBankAccountInfo(

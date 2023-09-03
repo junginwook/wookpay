@@ -2,7 +2,7 @@ package com.castle.wookpay.membership.adapter.out.persistence;
 
 import com.castle.wookpay.common.annotation.PersistenceAdapter;
 import com.castle.wookpay.membership.domain.entity.MembershipJpaEntity;
-import com.castle.wookpay.membership.adapter.out.persistence.repository.SpringDataMembershipRepository;
+import com.castle.wookpay.membership.domain.repository.SpringDataMembershipRepository;
 import com.castle.wookpay.membership.application.port.out.ValidateMembershipPort;
 import com.castle.wookpay.membership.application.port.out.LoginMembershipPort;
 import com.castle.wookpay.membership.application.port.out.RegisterMembershipPort;

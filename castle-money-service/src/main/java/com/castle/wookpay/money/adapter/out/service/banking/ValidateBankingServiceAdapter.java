@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 public class ValidateBankingServiceAdapter implements ValidateBankingPort {
 
 	@Override
-	public ValidateBankingResponse validateBanking(String membershipId) {
-		return null;
+	public void validateBanking(String membershipId, String bankName, String bankAccountNumber) {
+
 	}
 }

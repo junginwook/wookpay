@@ -5,5 +5,5 @@ import com.castle.wookpay.money.adapter.out.service.membership.response.Validate
 
 public interface ValidateBankingPort {
 
-	ValidateBankingResponse validateBanking(String membershipId);
+	void validateBanking(String membershipId, String bankName, String bankAccountNumber);
 }

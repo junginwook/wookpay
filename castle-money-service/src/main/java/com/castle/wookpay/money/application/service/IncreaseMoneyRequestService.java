@@ -20,10 +20,13 @@ public class IncreaseMoneyRequestService implements IncreaseMoneyUseCase {
 	@Override
 	public MoneyChangingRequest increaseMoney(IncreaseMoneyChangingCommand command) {
 		//유효한 유저인지 체크
-		ValidateMembershipResponse membership = validateMembershipPort.validateMembership(command.targetMembershipId());
+		ValidateMembershipResponse validateMembershipResponse = validateMembershipPort.validateMembership(command.targetMembershipId());
 
 		//유효한 뱅킹 계정인지 확인
-
+		validateBankingPort.validateBanking(
+				command.targetMembershipId(),
+				validateMembershipResponse.bankName(),
+				validateMembershipResponse.bankAccountNumber());
 
 		return null;
 	}

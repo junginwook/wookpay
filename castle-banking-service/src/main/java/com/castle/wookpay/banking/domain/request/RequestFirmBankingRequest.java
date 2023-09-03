@@ -6,6 +6,10 @@ import jakarta.validation.constraints.NotNull;
 public record RequestFirmBankingRequest(
 		@NotNull
 		@NotBlank
+		String membershipId,
+
+		@NotNull
+		@NotBlank
 		String fromBankName,
 
 		@NotNull

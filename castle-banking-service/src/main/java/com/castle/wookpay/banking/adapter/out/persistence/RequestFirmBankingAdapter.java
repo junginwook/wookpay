@@ -1,7 +1,6 @@
 package com.castle.wookpay.banking.adapter.out.persistence;
 
 import com.castle.wookpay.banking.application.port.out.RequestFirmBankingPort;
-import com.castle.wookpay.banking.domain.FirmBankingRequest;
 import com.castle.wookpay.banking.domain.entity.FirmBankingRequestJpaEntity;
 import com.castle.wookpay.banking.domain.enums.FirmBankingStatus;
 import com.castle.wookpay.banking.domain.repository.FirmBankingRequestRepository;

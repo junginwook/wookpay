@@ -33,6 +33,7 @@ public class RegisterFirmBankingController {
 				.toBankName(request.toBankName())
 				.toBankAccountNumber(request.toBankAccountNumber())
 				.moneyAmount(request.moneyAmount())
+				.membershipId(request.membershipId())
 				.build();
 
 		RequestFirmBankingResult result = requestFirmBankingUseCase.requestFirmBanking(command);

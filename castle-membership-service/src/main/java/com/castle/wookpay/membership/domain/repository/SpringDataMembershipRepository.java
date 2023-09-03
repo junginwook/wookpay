@@ -1,4 +1,4 @@
-package com.castle.wookpay.membership.adapter.out.persistence.repository;
+package com.castle.wookpay.membership.domain.repository;
 
 import com.castle.wookpay.membership.domain.entity.MembershipJpaEntity;
 import java.util.Optional;

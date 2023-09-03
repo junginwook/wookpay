@@ -4,7 +4,9 @@ import com.castle.wookpay.banking.adapter.out.external.bank.request.ExRequestFir
 import com.castle.wookpay.banking.adapter.out.external.bank.response.ExRequestFirmBankingResponse;
 import com.castle.wookpay.banking.application.port.in.RequestFirmBankingUseCase;
 import com.castle.wookpay.banking.application.port.out.RequestFirmBankingPort;
+import com.castle.wookpay.banking.application.port.out.ValidateBankingPort;
 import com.castle.wookpay.banking.application.port.out.external.bank.RequestExternalFirmBankingPort;
+import com.castle.wookpay.banking.application.port.out.microservice.membership.ValidateMembershipPort;
 import com.castle.wookpay.banking.domain.command.RequestFirmBankingCommand;
 import com.castle.wookpay.banking.domain.entity.FirmBankingRequestJpaEntity;
 import com.castle.wookpay.banking.domain.enums.FirmBankingStatus;
@@ -20,9 +22,17 @@ public class RequestFirmBankingService implements RequestFirmBankingUseCase {
 
 	private final RequestFirmBankingPort requestFirmBankingPort;
 	private final RequestExternalFirmBankingPort requestExternalFirmBankingPort;
+	private final ValidateMembershipPort validateMembershipPort;
+	private final ValidateBankingPort validateBankingPort;
 
 	@Override
 	public RequestFirmBankingResult requestFirmBanking(RequestFirmBankingCommand command) {
+		// 유저 검증
+		validateMembershipPort.validateMembership(command.membershipId());
+
+		// 유저 계좌 검증
+		validateBankingPort.validateBanking(command.membershipId(), command.fromBankName(), command.fromBankAccountNumber());
+
 		// 펌뱅킹 요청 저장
 		final FirmBankingRequestJpaEntity firmBankingRequest = requestFirmBankingPort.createFirmBankingRequest(
 				command.fromBankName(),
