@@ -7,6 +7,7 @@ import com.castle.wookpay.banking.domain.response.RequestFirmBankingResponse;
 import com.castle.wookpay.banking.domain.result.RequestFirmBankingResult;
 import com.castle.wookpay.common.annotation.WebAdapter;
 import com.castle.wookpay.common.http.ApiResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,7 @@ public class RegisterFirmBankingController {
 
 	@PostMapping(path = "/firmBanking/register")
 	ApiResponse<RequestFirmBankingResponse> registerFirmBankingResponse(
-			@RequestBody RequestFirmBankingRequest request
+			@Valid @RequestBody RequestFirmBankingRequest request
 	) {
 		RequestFirmBankingCommand command = RequestFirmBankingCommand.builder()
 				.fromBankName(request.fromBankName())
@@ -32,14 +33,20 @@ public class RegisterFirmBankingController {
 				.toBankName(request.toBankName())
 				.toBankAccountNumber(request.toBankAccountNumber())
 				.moneyAmount(request.moneyAmount())
+				.membershipId(request.membershipId())
 				.build();
 
 		RequestFirmBankingResult result = requestFirmBankingUseCase.requestFirmBanking(command);
 		return new ApiResponse<>(
-				new RequestFirmBankingResponse(
-
-				),
-				HttpStatus.OK
+			new RequestFirmBankingResponse(
+				result.firmBankingRequestId(),
+				result.fromBankName(),
+				request.fromBankAccountNumber(),
+				request.toBankName(),
+				request.toBankAccountNumber(),
+				request.moneyAmount()
+			),
+			HttpStatus.OK
 		);
 	}
 }

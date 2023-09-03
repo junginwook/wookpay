@@ -4,11 +4,12 @@ import lombok.Builder;
 
 @Builder
 public record RequestFirmBankingCommand(
+		String membershipId,
 		String fromBankName,
 		String fromBankAccountNumber,
 		String toBankName,
 		String toBankAccountNumber,
-		int moneyAmount
+		Long moneyAmount
 ) {
 
 }

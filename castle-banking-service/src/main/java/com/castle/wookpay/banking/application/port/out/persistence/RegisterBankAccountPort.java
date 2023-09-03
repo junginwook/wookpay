@@ -1,4 +1,4 @@
-package com.castle.wookpay.banking.domain.feign.persistence;
+package com.castle.wookpay.banking.application.port.out.persistence;
 
 import com.castle.wookpay.banking.domain.entity.BankAccountJpaEntity;
 
