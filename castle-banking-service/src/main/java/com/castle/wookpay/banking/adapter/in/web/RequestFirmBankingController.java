@@ -17,14 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @WebAdapter
 @RestController
-@RequestMapping("/banking/v1")
+@RequestMapping("/banking/internal/v1/")
 @RequiredArgsConstructor
-public class RegisterFirmBankingController {
-
+public class RequestFirmBankingController {
 	private final RequestFirmBankingUseCase requestFirmBankingUseCase;
 
-	@PostMapping(path = "/firmBanking/register")
-	ApiResponse<RequestFirmBankingResponse> registerFirmBankingResponse(
+	@PostMapping(path = "/firmBanking")
+	ApiResponse<RequestFirmBankingResponse> requestFirmBankingResponse(
 			@Valid @RequestBody RequestFirmBankingRequest request
 	) {
 		RequestFirmBankingCommand command = RequestFirmBankingCommand.builder()
