@@ -5,4 +5,6 @@ import com.castle.wookpay.money.domain.MoneyChangingRequest;
 
 public interface IncreaseMoneyUseCase {
 	MoneyChangingRequest increaseMoney(IncreaseMoneyChangingCommand command);
+
+	void increaseMoneyRequestByEvent(IncreaseMoneyChangingCommand command);
 }

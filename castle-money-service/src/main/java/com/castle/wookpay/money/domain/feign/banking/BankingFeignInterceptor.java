@@ -1,4 +1,4 @@
-package com.castle.wookpay.money.domain.feign.membership;
+package com.castle.wookpay.money.domain.feign.banking;
 
 import feign.Request.HttpMethod;
 import feign.RequestInterceptor;
@@ -6,7 +6,7 @@ import feign.RequestTemplate;
 import java.nio.charset.StandardCharsets;
 import org.apache.commons.lang3.StringUtils;
 
-public class MembershipFeignInterceptor implements RequestInterceptor {
+public class BankingFeignInterceptor implements RequestInterceptor {
 
 	@Override
 	public void apply(RequestTemplate template) {

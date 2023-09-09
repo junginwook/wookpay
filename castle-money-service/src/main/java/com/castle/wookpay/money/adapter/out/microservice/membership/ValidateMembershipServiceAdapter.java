@@ -1,7 +1,7 @@
-package com.castle.wookpay.money.adapter.out.service.membership;
+package com.castle.wookpay.money.adapter.out.microservice.membership;
 
 import com.castle.wookpay.common.annotation.ExternalSystemAdapter;
-import com.castle.wookpay.money.adapter.out.service.membership.response.ValidateMembershipResponse;
+import com.castle.wookpay.money.adapter.out.microservice.membership.response.ValidateMembershipResponse;
 import com.castle.wookpay.money.application.port.out.service.membership.ValidateMembershipPort;
 import com.castle.wookpay.money.domain.feign.membership.MembershipFeignClient;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 @ExternalSystemAdapter
 @RequiredArgsConstructor
 public class ValidateMembershipServiceAdapter implements ValidateMembershipPort {
-
 	private final MembershipFeignClient membershipFeignClient;
 
 	@Override
