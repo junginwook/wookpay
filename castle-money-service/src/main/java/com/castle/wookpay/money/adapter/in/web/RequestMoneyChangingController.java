@@ -2,6 +2,9 @@ package com.castle.wookpay.money.adapter.in.web;
 
 import com.castle.wookpay.common.annotation.WebAdapter;
 import com.castle.wookpay.common.http.ApiResponse;
+import com.castle.wookpay.money.application.port.in.CreateMemberMoneyUseCase;
+import com.castle.wookpay.money.domain.command.CreateMemberMoneyCommand;
+import com.castle.wookpay.money.domain.request.CreateMemberMoneyRequest;
 import com.castle.wookpay.money.domain.request.DecreaseMoneyChangingRequest;
 import com.castle.wookpay.money.domain.request.IncreaseMoneyChangingRequest;
 import com.castle.wookpay.money.domain.response.DecreaseMoneyChangingResponse;
@@ -27,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RequestMoneyChangingController {
 
 	private final IncreaseMoneyUseCase increaseMoneyUseCase;
-
+	private final CreateMemberMoneyUseCase createMemberMoneyUseCase;
 	@Operation(summary = "머니 감액 요청")
 	@PostMapping(path = "/money/v1/increase")
 	public ApiResponse<IncreaseMoneyChangingResponse> increaseMoney(
@@ -62,4 +65,16 @@ public class RequestMoneyChangingController {
 		);
 	}
 
+	@PostMapping(path = "/money/create-member-money")
+	void createMemberMoney(@RequestBody CreateMemberMoneyRequest request) {
+		createMemberMoneyUseCase.createMemberMoney(new CreateMemberMoneyCommand(request.membershipId()));
+
+	}
+
+	@PostMapping(path = "/money/increase-eda")
+	void increaseMoneyChangingRequestByEvent(@RequestBody IncreaseMoneyChangingRequest request) {
+		IncreaseMoneyChangingCommand command = new IncreaseMoneyChangingCommand(request.targetMembershipId(), request.amount());
+
+		increaseMoneyUseCase.increaseMoneyRequestByEvent(command);
+	}
 }
