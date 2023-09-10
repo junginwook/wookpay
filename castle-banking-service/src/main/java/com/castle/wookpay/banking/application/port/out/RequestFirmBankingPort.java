@@ -11,6 +11,7 @@ public interface RequestFirmBankingPort {
 			String toBankName,
 			String toBankAccountNumber,
 			Long moneyAmount,
-			FirmBankingStatus firmBankingStatus
+			FirmBankingStatus firmBankingStatus,
+			String aggregateIdentifier
 	);
 }

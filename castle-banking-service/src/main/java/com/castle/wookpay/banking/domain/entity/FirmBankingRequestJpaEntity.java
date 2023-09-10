@@ -26,13 +26,17 @@ public class FirmBankingRequestJpaEntity {
 	private Long moneyAmount;
 	private FirmBankingStatus firmBankingStatus;
 
-	public FirmBankingRequestJpaEntity(String fromBankName, String fromBankAccountNumber, String toBankName, String toBankAccountNumber, Long moneyAmount, FirmBankingStatus firmBankingStatus) {
+	private String aggregateIdentifier;
+
+	public FirmBankingRequestJpaEntity(String fromBankName, String fromBankAccountNumber, String toBankName, String toBankAccountNumber, Long moneyAmount, FirmBankingStatus firmBankingStatus,
+			String aggregateIdentifier) {
 		this.fromBankName = fromBankName;
 		this.fromBankAccountNumber = fromBankAccountNumber;
 		this.toBankName = toBankName;
 		this.toBankAccountNumber = toBankAccountNumber;
 		this.moneyAmount = moneyAmount;
 		this.firmBankingStatus = firmBankingStatus;
+		this.aggregateIdentifier = aggregateIdentifier;
 	}
 
 	public void changeStatus(FirmBankingStatus status) {
