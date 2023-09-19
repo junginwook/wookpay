@@ -7,12 +7,12 @@ import org.springframework.context.annotation.Configuration;
 public class BankingFeignConfig {
 
 	@Bean
-	public BankingFeignInterceptor feignInterceptor() {
+	public BankingFeignInterceptor bankingFeignInterceptor() {
 		return new BankingFeignInterceptor();
 	}
 
 	@Bean
-	public BankingFeignErrorDecoder demoFeignErrorDecoder() {
+	public BankingFeignErrorDecoder bankingDemoFeignErrorDecoder() {
 		return new BankingFeignErrorDecoder();
 	}
 }

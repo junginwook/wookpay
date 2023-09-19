@@ -1,10 +1,10 @@
 package com.castle.wookpay.money.application.service;
 
 import com.castle.wookpay.common.annotation.UseCase;
+import com.castle.wookpay.money.adapter.axon.command.IncreaseMoneyCommand;
 import com.castle.wookpay.money.adapter.out.microservice.banking.request.RequestFirmBankingRequest;
 import com.castle.wookpay.money.adapter.out.microservice.banking.response.RequestFirmBankingResponse;
 import com.castle.wookpay.money.adapter.out.microservice.banking.response.ValidateBankingResponse;
-import com.castle.wookpay.money.adapter.out.microservice.membership.response.ValidateMembershipResponse;
 import com.castle.wookpay.money.application.port.in.IncreaseMoneyUseCase;
 import com.castle.wookpay.money.application.port.out.persistence.GetMemberMoneyPort;
 import com.castle.wookpay.money.application.port.out.service.banking.RequestFirmBankingPort;
@@ -13,7 +13,6 @@ import com.castle.wookpay.money.application.port.out.service.membership.Validate
 import com.castle.wookpay.money.domain.command.IncreaseMoneyChangingCommand;
 import com.castle.wookpay.money.domain.MoneyChangingRequest;
 import com.castle.wookpay.money.domain.entity.MemberMoneyJpaEntity;
-import com.castle.wookpay.money.domain.request.IncreaseMoneyChangingRequest;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +25,6 @@ public class IncreaseMoneyRequestService implements IncreaseMoneyUseCase {
 	private final ValidateBankingPort validateBankingPort;
 	private final RequestFirmBankingPort requestFirmBankingPort;
 	private final CommandGateway commandGateway;
-
 	private final GetMemberMoneyPort getMemberMoneyPort;
 
 	@Override
@@ -64,9 +62,9 @@ public class IncreaseMoneyRequestService implements IncreaseMoneyUseCase {
 		String aggregateIdentifier = memberMoneyJpaEntity.getAggregateIdentifier();
 
 		// command
-		commandGateway.send(new IncreaseMoneyChangingCommand(
+		commandGateway.send(new IncreaseMoneyCommand(
 				command.targetMembershipId(),
-				command.amount(),
+				command.balance(),
 				aggregateIdentifier
 		)).whenComplete((result, throwable) -> {
 			if (throwable != null) {

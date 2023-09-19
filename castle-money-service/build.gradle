@@ -9,7 +9,7 @@ group = 'com.castle.wookpay.money'
 version = '1.0.1'
 
 ext{
-    axonVersion = "4.6.0"
+    axonVersion = "4.8.0"
 }
 
 dependencies {

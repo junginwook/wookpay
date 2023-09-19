@@ -4,7 +4,7 @@ services:
     container_name: axon-server
     image: axoniq/axonserver:4.6.3-jdk-11-dev
     networks:
-      - fastcampuspay_network
+      - wookpay_network
     ports:
       - "8024:8024"
       - "8124:8124"
