@@ -37,7 +37,7 @@ public class RequestMoneyChangingController {
 			@Valid @RequestBody IncreaseMoneyChangingRequest request) {
 
 		MoneyChangingRequest moneyChangingRequest = increaseMoneyUseCase.increaseMoney(
-				new IncreaseMoneyChangingCommand(request.targetMembershipId(), request.amount())
+				new IncreaseMoneyChangingCommand(request.targetMembershipId(), request.amount(), null)
 		);
 
 		return new ApiResponse<>(
@@ -55,10 +55,6 @@ public class RequestMoneyChangingController {
 	public ApiResponse<DecreaseMoneyChangingResponse> decreaseMoney(
 			@Valid @RequestBody DecreaseMoneyChangingRequest request) {
 
-		MoneyChangingRequest moneyChangingRequest = increaseMoneyUseCase.increaseMoney(
-				new IncreaseMoneyChangingCommand(request.targetMembershipId(), request.amount())
-		);
-
 		return new ApiResponse<>(
 				new DecreaseMoneyChangingResponse("", MoneyChangingType.INCREASE, MoneyChangingResultStatus.LACK_OF_BALANCE, 1000L),
 				HttpStatus.OK
@@ -73,7 +69,7 @@ public class RequestMoneyChangingController {
 
 	@PostMapping(path = "/money/increase-eda")
 	void increaseMoneyChangingRequestByEvent(@RequestBody IncreaseMoneyChangingRequest request) {
-		IncreaseMoneyChangingCommand command = new IncreaseMoneyChangingCommand(request.targetMembershipId(), request.amount());
+		IncreaseMoneyChangingCommand command = new IncreaseMoneyChangingCommand(request.targetMembershipId(), request.amount(), request.aggregateIdentifier());
 
 		increaseMoneyUseCase.increaseMoneyRequestByEvent(command);
 	}

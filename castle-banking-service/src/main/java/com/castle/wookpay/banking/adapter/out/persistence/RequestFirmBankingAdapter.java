@@ -15,7 +15,7 @@ public class RequestFirmBankingAdapter implements RequestFirmBankingPort {
 
 	@Override
 	public FirmBankingRequestJpaEntity createFirmBankingRequest(String fromBankName, String fromBankAccountNumber, String toBankName, String toBankAccountNumber, Long moneyAmount,
-			FirmBankingStatus firmBankingStatus) {
+			FirmBankingStatus firmBankingStatus, String aggregateIdentifier) {
 		return firmBankingRequestRepository.save(
 				new FirmBankingRequestJpaEntity(
 					fromBankName,
@@ -23,8 +23,8 @@ public class RequestFirmBankingAdapter implements RequestFirmBankingPort {
 					toBankName,
 					toBankAccountNumber,
 					moneyAmount,
-					firmBankingStatus
-				)
+					firmBankingStatus,
+						aggregateIdentifier)
 		);
 	}
 }

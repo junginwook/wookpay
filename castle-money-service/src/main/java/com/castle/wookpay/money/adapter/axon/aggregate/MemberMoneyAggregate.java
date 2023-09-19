@@ -2,7 +2,9 @@ package com.castle.wookpay.money.adapter.axon.aggregate;
 
 import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 
+import com.castle.wookpay.money.adapter.axon.command.IncreaseMoneyCommand;
 import com.castle.wookpay.money.adapter.axon.command.MemberMoneyCreatedCommand;
+import com.castle.wookpay.money.adapter.axon.event.IncreaseMemberMoneyEvent;
 import com.castle.wookpay.money.adapter.axon.event.MemberMoneyCreatedEvent;
 import com.castle.wookpay.money.domain.command.IncreaseMoneyChangingCommand;
 import java.util.UUID;
@@ -31,11 +33,11 @@ public class MemberMoneyAggregate {
 	}
 
 	@CommandHandler
-	public String handle(IncreaseMoneyChangingCommand command) {
-		System.out.println("IncreaseMoneyChangingCommand Handler");
+	public String handle(IncreaseMoneyCommand command) {
+		System.out.println("IncreaseMoneyCommand Handler");
 		id = command.aggregateIdentifier();
 
-		apply(new IncreaseMoneyChangingCommand(command.targetMembershipId(), command.amount(), id));
+		apply(new IncreaseMemberMoneyEvent(command.targetMembershipId(), command.balance(), id));
 		return id;
 	}
 
@@ -48,10 +50,10 @@ public class MemberMoneyAggregate {
 	}
 
 	@EventSourcingHandler
-	public void on(IncreaseMoneyChangingCommand event) {
-		System.out.println("MemberMoneyCreatedEvent Sourcing Handler");
+	public void on(IncreaseMemberMoneyEvent event) {
+		System.out.println("IncreaseMemberMoneyEvent Sourcing Handler");
 		id = event.aggregateIdentifier();
-		membershipId = Long.parseLong(event.targetMembershipId());
+		membershipId = Long.parseLong(event.membershipId());
 		balance = event.amount();
 	}
 

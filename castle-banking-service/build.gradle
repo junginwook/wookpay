@@ -9,7 +9,7 @@ group = 'com.castle.wookpay.banking'
 version = '1.0.0'
 
 ext{
-    axonVersion = "4.6.0"
+    axonVersion = "4.8.0"
 }
 
 dependencies {
@@ -22,6 +22,10 @@ dependencies {
     //security
     implementation 'org.springframework.boot:spring-boot-starter-security'
     testImplementation 'org.springframework.security:spring-security-test'
+
+    //axon server
+    implementation group: 'org.axonframework', name: 'axon-spring-boot-starter', version: "$axonVersion"
+    implementation group: 'org.axonframework', name: 'axon-configuration', version: "$axonVersion"
 }
 
 bootJar {

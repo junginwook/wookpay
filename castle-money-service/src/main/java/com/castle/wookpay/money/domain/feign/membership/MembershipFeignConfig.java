@@ -7,12 +7,12 @@ import org.springframework.context.annotation.Configuration;
 public class MembershipFeignConfig {
 
 	@Bean
-	public MembershipFeignInterceptor feignInterceptor() {
+	public MembershipFeignInterceptor membershipfeignInterceptor() {
 		return new MembershipFeignInterceptor();
 	}
 
 	@Bean
-	public MembershipFeignErrorDecoder demoFeignErrorDecoder() {
+	public MembershipFeignErrorDecoder membershipDemoFeignErrorDecoder() {
 		return new MembershipFeignErrorDecoder();
 	}
 }
