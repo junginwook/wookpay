@@ -6,7 +6,6 @@ import com.castle.wookpay.money.adapter.axon.command.IncreaseMoneyCommand;
 import com.castle.wookpay.money.adapter.axon.command.MemberMoneyCreatedCommand;
 import com.castle.wookpay.money.adapter.axon.event.IncreaseMemberMoneyEvent;
 import com.castle.wookpay.money.adapter.axon.event.MemberMoneyCreatedEvent;
-import com.castle.wookpay.money.domain.command.IncreaseMoneyChangingCommand;
 import java.util.UUID;
 import lombok.Data;
 import org.axonframework.commandhandling.CommandHandler;
